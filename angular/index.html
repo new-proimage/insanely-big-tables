@@ -27,8 +27,8 @@
     <button id="edit" class="btn">Edit</button>
     <button id="del" class="btn">Remove</button>
     <button id="start" class="btn">Start</button>
-    <input id="timer" placeholder="timer, ms" />
-    <input id="amount" placeholder="how many" />
+    <input id="timer" placeholder="timer, ms" value="{{timer}}"/>
+    <input id="amount" placeholder="how many" value="{{amount}}"/>
     <input id="total" value="{{records.length}}" readonly="readonly" />
     
     <table class="table table-stripped">
@@ -39,7 +39,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="record in records" ng-click="select()">
+        <tr ng-repeat="record in records" ng-click="select($index)" ng-class="{error: record.selected}">
           <td>{{record.key}}</td>
           <td>{{record.value}}</td>
         </tr>
