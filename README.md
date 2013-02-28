@@ -12,3 +12,7 @@ This project is intended to research the behavior of frameworks and components t
 - KendoIU (grid component)
 - Ember.js
 - Angular.js
+
+### Comparison characteristics
+ - Speed: the solution should populate the table as fast as possible
+ - Clean DOM, less unexpected nodes and attributes

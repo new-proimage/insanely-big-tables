@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+  <script src="http://code.jquery.com/jquery.min.js"></script>
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+    <script src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/2.2.0/knockout-min.js"></script>
+    <script src="index.js"></script>
+    <style>
+      body {
+        margin: 10px;
+      }
+      #total {
+        float: right;  
+      }
+    </style>
+  </head>
+  <body>
+    <button id="ins" class="btn">Insert</button>
+    <button id="add" class="btn">Add</button>
+    <!-- <button id="edit" class="btn">Edit</button> -->
+    <!-- <button id="del" class="btn">Remove</button> -->
+    <button id="start" class="btn">Start</button>
+    <input id="timer" data-bind="value: timer" placeholder="timer, ms"/>
+    <input id="amount" data-bind="value: amount" placeholder="how many"/>
+    <input id="total" data-bind="value: records.length" readonly="readonly" />
+    
+    <table class="table table-stripped">
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody data-bind="foreach: records">
+        <tr data-bind="click: select">
+          <td data-bind="text: key"></td>
+          <td data-bind="text: value"></td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </body>
+</html>
