@@ -1,7 +1,8 @@
 # Insanely Big Tables
 
 ### Overview
-This project is intended to research the behavior of frameworks and components that allows to build tables. 
+This project is intended to research the behavior of frameworks and components that allows to build tables.
+Candidates are chosen according to support of two-way bindings.
 
 ### Requirements
 - Table should behave smoothly with amount of record in range 2000 - 4000. 

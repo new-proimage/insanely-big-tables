@@ -17,14 +17,14 @@
     </style>
   </head>
   <body>
-    <button id="ins" class="btn">Insert</button>
-    <button id="add" class="btn">Add</button>
+    <button id="ins" class="btn" data-bind="click: insert">Insert</button>
+    <button id="add" class="btn" data-bind="click: add">Add</button>
     <!-- <button id="edit" class="btn">Edit</button> -->
     <!-- <button id="del" class="btn">Remove</button> -->
     <button id="start" class="btn">Start</button>
     <input id="timer" data-bind="value: timer" placeholder="timer, ms"/>
     <input id="amount" data-bind="value: amount" placeholder="how many"/>
-    <input id="total" data-bind="value: records.length" readonly="readonly" />
+    <input id="total" data-bind="value: total" readonly="readonly" />
     
     <table class="table table-stripped">
       <thead>
@@ -34,7 +34,7 @@
         </tr>
       </thead>
       <tbody data-bind="foreach: records">
-        <tr data-bind="click: select">
+        <tr data-bind="click: $parent.select">
           <td data-bind="text: key"></td>
           <td data-bind="text: value"></td>
         </tr>
