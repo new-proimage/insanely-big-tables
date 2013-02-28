@@ -19,12 +19,17 @@ function TableController($scope) {
   };
   $scope.start = function () {
     var that = this,
-        i = 0;
+        i = 0,
+        launch = new Date().getTime();
     (function adding() {
       that.insert();
       if (i !== 0) that.$apply();
       i += 1;
       if (i < that.amount) setTimeout(adding, that.timer);
+      else {
+        $scope.elapsed = (new Date().getTime() - launch)/1000;
+        that.$apply();
+      }
     })();
   };
 }

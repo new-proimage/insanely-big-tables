@@ -12,8 +12,9 @@
       body {
         margin: 10px;
       }
-      #total {
+      #total, #elapsed {
         float: right !important;
+        margin-left: 5px !important;
       }
       input: {
         margin: 0 !important;
@@ -29,9 +30,11 @@
     <button id="start" class="btn" ng-click="start()">Start</button>
     <input id="timer" placeholder="timer, ms" ng-model="timer"/>
     <input id="amount" placeholder="how many" ng-model="amount"/>
+    <input id="elapsed" value="{{elapsed}}" readonly="readonly" placeholder="elapsed time, sec" />
     <input id="total" value="{{records.length}}" readonly="readonly" />
+
     
-    <table class="table table-stripped">
+    <table class="table table-striped">
       <thead>
         <tr>
           <th>Key</th>
