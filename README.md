@@ -17,3 +17,4 @@ Candidates are chosen according to support of two-way bindings.
 ### Comparison characteristics
  - Speed: the solution should populate the table as fast as possible
  - Clean DOM, less unexpected nodes and attributes
+ - Amount of JS code (measured in SLOC)

@@ -11,6 +11,7 @@ App.DataController = Ember.ArrayProxy.create({
   timer: null,
   amount: null,
   elapsed: null,
+  selected: -1,
   content: [
     App.Record.create(),
     App.Record.create()
@@ -21,6 +22,7 @@ App.RecordView = Ember.View.extend({
   tagName: 'tr',
   record: null,
   click: function (ev) {
+    App.DataController.set('selected', App.DataController.content.indexOf(this.record));
     $('.error').each(function (i, el) {
       $(el).removeClass('error');
     });
@@ -44,6 +46,23 @@ App.AddButtonView = App.ButtonView.extend({
     App.DataController.pushObject(App.Record.create());
   }
 });
+
+App.EditButtonView = App.ButtonView.extend({
+  click: function () {
+    var index = App.DataController.get('selected');
+    if (index !== -1) {
+      App.DataController.content[index].set('value', 'Edited');
+    }
+  }
+});
+
+
+App.RemoveButtonView = App.ButtonView.extend({
+  click: function () {
+    
+  }
+});
+
 
 App.StartButtonView = App.ButtonView.extend({
   click: function () {
