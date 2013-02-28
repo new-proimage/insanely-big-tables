@@ -59,7 +59,10 @@ App.EditButtonView = App.ButtonView.extend({
 
 App.RemoveButtonView = App.ButtonView.extend({
   click: function () {
-    
+    var index = App.DataController.get('selected');
+    if (index !== -1) {
+      App.DataController.removeObject(App.DataController.content[index]);
+    }
   }
 });
 
