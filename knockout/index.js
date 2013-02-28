@@ -13,6 +13,7 @@ $(function () {
       return that.records().length;
     }, that);
     that.selected = -1;
+
     that.select = function (index, record, ev) {
       that.selected = index;
       $('.error').each(function (i, el) {
@@ -20,12 +21,15 @@ $(function () {
       });
       $(ev.currentTarget).addClass('error');
     };
+
     that.insert = function () {
       that.records.unshift(new Record());
     };
+
     that.add = function () {
       that.records.push(new Record());
     };
+
     that.start = function () {
       var i = 0;
       (function adding() {
@@ -34,11 +38,20 @@ $(function () {
         if (i < that.amount()) setTimeout(adding, that.timer());
       })();
     };
+
     that.edit = function () {
       if (that.selected !== -1) {
         that.records()[that.selected].value('Edited');
       }
     };
+
+    that.remove = function () {
+      if (that.selected !== -1) {
+        that.records.splice(that.selected, 1);
+      }
+    };
+
   };
+
   ko.applyBindings(new View());
 });
