@@ -35,6 +35,13 @@ $(document).ready(function(){
     $('#total').val(grid.dataSource.total());
   });
 
+  $('#edit').on('click', function () {
+    var grid = $('#grid').data('kendoGrid'),
+        seluid = $(grid.select()).data('uid'),
+        item = grid.dataSource.getByUid(seluid);
+    item.set('val', 'Edited');
+  });
+
   $('#del').on('click', function () {
     var grid = $('#grid').data('kendoGrid');
     grid.removeRow(grid.select()); // This method also removes the record from the dataSource
