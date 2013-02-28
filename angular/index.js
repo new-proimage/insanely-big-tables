@@ -16,7 +16,15 @@ function TableController($scope) {
   };
 
   $scope.edit = function () {
-    $scope.records[$scope.selected].value = 'Edited';
+    if ($scope.selected !== -1) {
+      $scope.records[$scope.selected].value = 'Edited';
+    }
+  };
+
+  $scope.remove = function () {
+    if ($scope.selected !== -1) {
+      $scope.records.splice($scope.selected, 1);
+    }
   };
 
   $scope.select = function (ev, index) {
