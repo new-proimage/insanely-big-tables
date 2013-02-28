@@ -12,8 +12,9 @@
   input {
     margin: 0 !important;
   }
-  .total {
+  .total, .elapsed {
     float: right !important;
+    margin-left: 5px !important;
   }
 </style>
 <title>Test with Ember</title>
@@ -26,6 +27,7 @@
   {{#view App.StartButtonView}}Start{{/view}}
   {{#view App.TimerInputView}}{{/view}}
   {{#view App.AmountInputView}}{{/view}}
+  {{#view App.ElapsedView}}{{/view}}
   {{#view App.TotalView}}{{/view}}
   <table class="table table-stripped">
     <thead>

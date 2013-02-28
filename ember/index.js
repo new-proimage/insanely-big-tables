@@ -10,6 +10,7 @@ App.Record = Ember.Object.extend({
 App.DataController = Ember.ArrayProxy.create({
   timer: null,
   amount: null,
+  elapsed: null,
   content: [
     App.Record.create(),
     App.Record.create()
@@ -48,12 +49,13 @@ App.StartButtonView = App.ButtonView.extend({
   click: function () {
     var timer = App.DataController.get('timer'),
         amount = App.DataController.get('amount'),
-        i = 0;
-    console.log(timer, amount);
+        i = 0,
+        launch = new Date().getTime();
     (function adding() {
       App.DataController.unshiftObject(App.Record.create());
       i += 1;
       if (i < amount) setTimeout(adding, timer);
+      else App.DataController.set('elapsed', (new Date().getTime() - launch)/1000);
     })();
 
   }
@@ -76,4 +78,12 @@ App.TotalView = Ember.TextField.extend({
   classNames: ['total'],
   readonly: 'readonly',
   valueBinding: 'App.DataController.content.length'
+});
+
+App.ElapsedView = Ember.TextField.extend({
+  attributeBindings: ['readonly', 'placeholder'],
+  classNames: ['elapsed'],
+  readonly: 'readonly',
+  placeholder: 'elapsed time, sec',
+  valueBinding: 'App.DataController.elapsed'
 });
