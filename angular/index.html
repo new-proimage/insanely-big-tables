@@ -39,7 +39,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="record in records" ng-click="select($index)" ng-class="{error: record.selected}">
+        <tr ng-repeat="record in records" ng-click="select($event)">
           <td>{{record.key}}</td>
           <td>{{record.value}}</td>
         </tr>

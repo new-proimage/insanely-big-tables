@@ -1,7 +1,6 @@
 function Record () {
   this.key = Math.random();
   this.value = Math.random()*100;
-  this.selected = false;
 }
 
 function TableController($scope) {
@@ -14,10 +13,10 @@ function TableController($scope) {
   $scope.add = function () {
     this.records.push(new Record());
   };
-  $scope.select = function (index) {
-    if (!this.records[index].selected) {
-      this.records.forEach(function (el) {el.selected = false;});
-      this.records[index].selected = true;
-    }
+  $scope.select = function (ev) {
+    $('.error').each(function (i, el) {
+      $(el).removeClass('error');
+    });
+    $(ev.currentTarget).addClass('error');
   };
 }
