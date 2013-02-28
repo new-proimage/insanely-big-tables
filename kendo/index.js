@@ -44,6 +44,7 @@ $(document).ready(function(){
   $('#start').on('click', function () {
     var TIMER = $('#timer').val(),
         amount = $('#amount').val(),
+        launch = new Date().getTime(),
         i = 0;
     (function adding() {
       var grid =  $('#grid').data('kendoGrid');
@@ -51,6 +52,7 @@ $(document).ready(function(){
       $('#total').val(grid.dataSource.total());
       i += 1;
       if (i < amount) setTimeout(adding, TIMER);
+      else $('#elapsed').val((new Date().getTime() - launch)/1000);
     })();
   });
 

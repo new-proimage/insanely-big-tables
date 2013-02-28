@@ -12,6 +12,14 @@
 
     <meta charset=utf-8 />
     <title>Grid</title>
+
+    <style>
+      #total, #elapsed {
+        float: right;
+        margin-left: 5px; 
+      }
+    </style>
+
   </head>
 
   <body>
@@ -24,7 +32,8 @@
       <button id="start">Start</button>
       <input id="timer" placeholder="timer, ms" />
       <input id="amount" placeholder="how many" />
-      <input id="total" style="float: right" value="2" readonly="readonly" />
+      <input id="elapsed" readonly="readonly" placeholder="elapsed time, sec"/>
+      <input id="total" value="2" readonly="readonly" />
     </div>
 
     <div id="grid"></div>
