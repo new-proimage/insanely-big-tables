@@ -4,8 +4,6 @@ function Record () {
 }
 
 function TableController($scope) {
-  $scope.timer = null;
-  $scope.amount = null;
   $scope.records = [new Record(), new Record()];
   $scope.insert = function () {
     this.records.unshift(new Record());
@@ -18,5 +16,15 @@ function TableController($scope) {
       $(el).removeClass('error');
     });
     $(ev.currentTarget).addClass('error');
+  };
+  $scope.start = function () {
+    var that = this,
+        i = 0;
+    (function adding() {
+      that.insert();
+      if (i !== 0) that.$apply();
+      i += 1;
+      if (i < that.amount) setTimeout(adding, that.timer);
+    })();
   };
 }
