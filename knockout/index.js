@@ -22,6 +22,15 @@ $(function () {
     this.add = function () {
       this.records.push(new Record());
     };
+    this.start = function () {
+      var that = this,
+          i = 0;
+      (function adding() {
+        that.insert();
+        i += 1;
+        if (i < that.amount()) setTimeout(adding, that.timer());
+      })();
+    };
   };
   ko.applyBindings(new View());
 });
