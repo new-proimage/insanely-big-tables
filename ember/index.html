@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
+<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script><script src="http://code.jquery.com/jquery.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0-rc.3/handlebars.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ember.js/1.0.0-rc.1/ember.js"></script>
+<script src="index.js"></script>
+<style>
+  input {
+    margin: 0 !important;
+  }
+  .total {
+    float: right !important;
+  }
+</style>
+<title>Test with Ember</title>
+</head>
+<body style="margin: 10px;">
+  
+  <script type="text/x-handlebars">
+  {{#view App.InsButtonView}}Insert{{/view}}
+  {{#view App.AddButtonView}}Add{{/view}}
+  {{#view App.StartButtonView}}Start{{/view}}
+  {{#view App.TimerInputView}}{{/view}}
+  {{#view App.AmountInputView}}{{/view}}
+  {{#view App.TotalView}}{{/view}}
+  <table class="table table-stripped">
+    <thead>
+      <tr>
+        <th>Key</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      
+        {{#each App.DataController}}
+          {{#view App.RecordView recordBinding="this"}}
+            <td>{{view.record.key}}</td>
+            <td>{{view.record.value}}</td>
+          {{/view}}
+        {{/each}}
+     
+    </tbody>
+     
+  </table>
+  </script>
+</body>
+</html>
