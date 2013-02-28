@@ -12,10 +12,11 @@ $(function () {
     that.total = ko.computed(function () {
       return that.records().length;
     }, that);
+    that.elapsed = ko.observable();
     that.selected = -1;
 
     that.select = function (index, record, ev) {
-      that.selected = index;
+      that.selected = index();
       $('.error').each(function (i, el) {
         $(el).removeClass('error');
       });
@@ -31,11 +32,13 @@ $(function () {
     };
 
     that.start = function () {
-      var i = 0;
+      var i = 0,
+          launch = new Date().getTime();
       (function adding() {
         that.insert();
         i += 1;
         if (i < that.amount()) setTimeout(adding, that.timer());
+        else that.elapsed((new Date().getTime() - launch)/1000);
       })();
     };
 
