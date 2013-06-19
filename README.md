@@ -23,7 +23,13 @@ See conclusion at the end.
 
 
 ### Launch
-Clone this repository. Each folder contains complete code per framework including node.js server. Open terminal and navigate to the folder of a framework, e.g. `cd insanely-big-tables/ember`. After that launch the server: `node server.js`. It will display on which port it is running. Open the browser, and run the tests.
+Clone this repository. Each folder contains complete code per framework including `index.html` file. Open it in a browser.
+The top of the page contains controls, the rest is the table with records. In the first input field you can specify the
+time (in milliseconds) between adding the records, e.g. `5` means that a new record will be added to the table every
+5 milliseconds. Please, keep in mind that the minimal timer for JS is 4 milliseconds. The second input field specifies the
+overall amount of records that should be added to the table.
+
+Two fields on the right specify the current amount of records in the table, and the elapsed time that took to populate the table.
 
 ### Analysis
 
