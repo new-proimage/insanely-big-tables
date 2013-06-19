@@ -5,6 +5,8 @@ This project is intended to research the behavior of frameworks and components t
 Candidates are chosen according to support of two-way bindings.
 See conclusion at the end.
 
+**Demo**: [http://bolshchikov.github.io/insanely-big-tables/](http://bolshchikov.github.io/insanely-big-tables/)
+
 ### Requirements
 - Table should behave smoothly with amount of record in range 2000 - 4000. 
 - Table should support the following operations: append(at the end of a list), insert(at the beginning of a list), delete, update.
