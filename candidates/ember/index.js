@@ -77,7 +77,7 @@ App.StartButtonView = App.ButtonView.extend({
       App.DataController.unshiftObject(App.Record.create());
       i += 1;
       if (i % 100 === 0) {
-        console.log('Time at ' + i + ' is: ', (new Date().getTime() - launch)/1000);
+        console.log((new Date().getTime() - launch)/1000);
       }
       if (i < amount) setTimeout(adding, timer);
       else App.DataController.set('elapsed', (new Date().getTime() - launch)/1000);

@@ -38,7 +38,7 @@ $(function () {
         that.insert();
         i += 1;
         if (i % 100 === 0) {
-          console.log('Time at ' + i + ' is: ', (new Date().getTime() - launch)/1000);
+          console.log((new Date().getTime() - launch)/1000);
         }
         if (i < that.amount()) setTimeout(adding, that.timer());
         else that.elapsed((new Date().getTime() - launch)/1000);
