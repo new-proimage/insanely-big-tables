@@ -8,7 +8,7 @@
 <body>
   <div class="container">
     <form class="form-inline">
-        <legend>Choose the framework</legend>
+        <legend>Choose a framework:</legend>
         <script type="text/x-handlebars">
           {{
             view Ember.Select contentBinding="App.controller.content"
@@ -19,6 +19,12 @@
           {{#view App.Launch}}Launch{{/view}}
         </script>
     </form>
+    <ol>
+      <li>Choose the framework. It will be opened in a new tab.</li>
+      <li>Specify the rate.</li>
+      <li>Specify the amount of records to fill.</li>
+      <li>Click Start.</li>
+    </ol>
   </div>
 
 <script type="text/javascript" src="js/libs/jquery-1.9.1.js"></script>
