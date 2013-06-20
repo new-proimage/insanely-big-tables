@@ -28,5 +28,8 @@ Specify the parameters of the test: the time period and overall amount and hit `
 In case of running test in parallel, make sure to run it in Google Chrome and in different windows.
 
 ## Angular vs. Ember
-
+The performance of Angular and Ember in the described test. The X-axis represents the amount of records in the table.
+The Y-axis is the time in seconds that took framework to fill the table. The rate is one record in every 5 milliseconds.
+![Angular vs. Ember Bars Plot](https://raw.github.com/bolshchikov/insanely-big-tables/master/stats/ng-vs-em-bars.png)
+![Angular vs. Ember Lines Plot](https://raw.github.com/bolshchikov/insanely-big-tables/master/stats/ng-vs-em-lines.png)
 
