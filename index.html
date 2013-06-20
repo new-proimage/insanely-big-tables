@@ -6,11 +6,25 @@
   <link rel="stylesheet" href="css/app.css"/>
 </head>
 <body>
+  <div class="container">
+    <form class="form-inline">
+        <legend>Choose the framework</legend>
+        <script type="text/x-handlebars">
+          {{
+            view Ember.Select contentBinding="App.controller.content"
+              optionLabelPath="content.title"
+              optionValuePath="content.value"
+              selectionBinding="App.controller.selected"
+          }}
+          {{#view App.Launch}}Launch{{/view}}
+        </script>
+    </form>
+  </div>
 
-<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="js/handlebars-1.0.0-rc.4.js"></script>
-<script type="text/javascript" src="js/ember-1.0.0-rc.5.js"></script>
-<script type="text/javascript" src="js/angular.min.js"></script>
+<script type="text/javascript" src="js/libs/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="js/libs/handlebars-1.0.0-rc.4.js"></script>
+<script type="text/javascript" src="js/libs/ember-1.0.0-rc.5.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
 
 </body>
 </html>
