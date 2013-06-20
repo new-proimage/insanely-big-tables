@@ -12,6 +12,10 @@ $(function () {
       Ember.Object.create({
         value: 'em',
         title: 'Ember'
+      }),
+      Ember.Object.create({
+        value: 'ko',
+        title: 'Knockout'
       })
     ]
   });
