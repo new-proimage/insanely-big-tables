@@ -43,6 +43,9 @@ function TableController($scope) {
       that.insert();
       if (i !== 0) that.$apply();
       i += 1;
+      if (i % 100 === 0) {
+        console.log('Time at ' + i + ' is: ', (new Date().getTime() - launch)/1000);
+      }
       if (i < that.amount) setTimeout(adding, that.timer);
       else {
         $scope.elapsed = (new Date().getTime() - launch)/1000;
