@@ -24,7 +24,7 @@ $(function () {
     classNames: ['btn', 'btn-success'],
     click: function (ev) {
       ev.preventDefault();
-      console.log(App.controller.get('selected.value'));
+      window.open('./candidates/' + App.controller.get('selected.title').toLowerCase() + '/index.html');
     }
   })
 });

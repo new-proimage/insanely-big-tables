@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+
+<html>
+  <head>
+    <link href="../vendors/css/kendo.common.min.css" rel="stylesheet" type="text/css" />
+    <link href="../vendors/css/kendo.rtl.min.css" rel="stylesheet" type="text/css" />
+    <link href="../vendors/css/kendo.default.min.css" rel="stylesheet" type="text/css" />
+    <link href="../vendors/css/kendo.dataviz.min.css" rel="stylesheet" type="text/css" />
+    <link href="../vendors/css/kendo.dataviz.default.min.css" rel="stylesheet" type="text/css" />
+    <link href="../vendors/css/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="../vendors/js/jquery-1.9.1.js"></script>
+    <script src="../vendors/js/kendo.core.js"></script>
+    <script src="../vendors/js/kendo.data.js"></script>
+    <script src="../vendors/js/kendo.selectable.js"></script>
+    <script src="../vendors/js/kendo.grid.js"></script>
+    <script src="index.js"></script>
+
+    <meta charset=utf-8 />
+    <title>Test with Kendo</title>
+
+    <style>
+      #total, #elapsed {
+        float: right;
+        margin-left: 5px; 
+      }
+    </style>
+
+  </head>
+
+  <body>
+
+    <div id="controller" style="margin-bottom: 15px;">
+      <button id="ins">Insert</button>
+      <button id="add">Add</button>
+      <button id="edit">Edit</button>
+      <button id="del">Remove</button>
+      <button id="start">Start</button>
+      <input id="timer" placeholder="timer, ms" />
+      <input id="amount" placeholder="how many" />
+      <input id="elapsed" readonly="readonly" placeholder="elapsed time, sec"/>
+      <input id="total" value="2" readonly="readonly" />
+    </div>
+
+    <div id="grid"></div>
+
+  </body>
+
+</html>

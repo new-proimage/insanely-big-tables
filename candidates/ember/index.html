@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+<link href="../../vendors/css/bootstrap.css" rel="stylesheet" type="text/css" />
+<script src="../../vendors/js/jquery-1.9.1.js"></script>
+<script src="../../vendors/js/handlebars-1.0.0-rc.3.js"></script>
+<script src="../../vendors/js/ember-1.0.0-rc.2.js"></script>
+<script src="index.js"></script>
+<style>
+  input {
+    margin: 0 !important;
+  }
+  .total, .elapsed {
+    float: right !important;
+    margin-left: 5px !important;
+  }
+</style>
+<title>Test with Ember</title>
+</head>
+<body style="margin: 10px;">
+  
+  <script type="text/x-handlebars">
+  {{#view App.InsButtonView}}Insert{{/view}}
+  {{#view App.AddButtonView}}Add{{/view}}
+  {{#view App.EditButtonView}}Edit{{/view}}
+  {{#view App.RemoveButtonView}}Remove{{/view}}
+  {{#view App.StartButtonView}}Start{{/view}}
+  {{#view App.TimerInputView}}{{/view}}
+  {{#view App.AmountInputView}}{{/view}}
+  {{#view App.ElapsedView}}{{/view}}
+  {{#view App.TotalView}}{{/view}}
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Key</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      
+        {{#each App.DataController}}
+          {{#view App.RecordView recordBinding="this"}}
+            <td>{{view.record.key}}</td>
+            <td>{{view.record.value}}</td>
+          {{/view}}
+        {{/each}}
+     
+    </tbody>
+     
+  </table>
+  </script>
+</body>
+</html>

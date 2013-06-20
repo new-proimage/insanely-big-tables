@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <link href="../../vendors/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <script src="../../vendors/js/jquery-1.9.1.js"></script>
+    <script src="../../vendors/js/knockout-min.js"></script>
+    <script src="index.js"></script>
+    <title>Test with Knockout</title>
+    <style>
+      body {
+        margin: 10px;
+      }
+      #total, #elapsed {
+        float: right;
+        margin-left: 5px; 
+      }
+    </style>
+  </head>
+  <body>
+    <button id="ins" class="btn" data-bind="click: insert">Insert</button>
+    <button id="add" class="btn" data-bind="click: add">Add</button>
+    <button id="edit" class="btn" data-bind="click: edit">Edit</button>
+    <button id="del" class="btn" data-bind="click: remove">Remove</button>
+    <button id="start" class="btn" data-bind="click: start">Start</button>
+    <input id="timer" data-bind="value: timer" placeholder="timer, ms"/>
+    <input id="amount" data-bind="value: amount" placeholder="how many"/>
+    <input id="elapsed" data-bind="value: elapsed" readonly="readonly"  placeholder="elapsed time, sec"/>
+    <input id="total" data-bind="value: total" readonly="readonly" />
+    
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody data-bind="foreach: records">
+        <tr data-bind="click: $parent.select.bind($data, $index)">
+          <td data-bind="text: key"></td>
+          <td data-bind="text: value"></td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </body>
+</html>
