@@ -21,6 +21,8 @@ overall amount of records that should be added to the table. Two fields on the r
 records in the table, and the elapsed time that took to populate the table.
 
 ## How to run
+You can check out the running website at [http://bolshchikov.github.io/insanely-big-tables/
+](http://bolshchikov.github.io/insanely-big-tables/)
 Clone this repository. It consists of framework folders and `vendors` folder which keeps the libs.
 Each famework folder contains javascript implementation and  `index.html` file. Open it in a browser.
 Specify the parameters of the test: the time period and overall amount and hit `Start` button.
@@ -34,3 +36,8 @@ In case of running test in parallel, make sure to run it in Google Chrome and in
 The performance of Angular and Ember in the described test. The X-axis represents the amount of records in the table.
 The Y-axis is the time in seconds that took framework to fill the table. The rate is one record in every 5 milliseconds.
 
+## Versions
+
+* Ember 1.0.0-rc.5
+* Angular 1.0.7
+* Knockout 2.2.1
