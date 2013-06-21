@@ -22,8 +22,9 @@ records in the table, and the elapsed time that took to populate the table.
 
 ## How to run
 You can check out the running website at [http://bolshchikov.github.io/insanely-big-tables/
-](http://bolshchikov.github.io/insanely-big-tables/)
-Clone this repository. It consists of framework folders and `vendors` folder which keeps the libs.
+](http://bolshchikov.github.io/insanely-big-tables/).
+
+Or clone this repository. It consists of framework folders and `vendors` folder which keeps the libs.
 Each famework folder contains javascript implementation and  `index.html` file. Open it in a browser.
 Specify the parameters of the test: the time period and overall amount and hit `Start` button.
 
