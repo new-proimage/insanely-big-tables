@@ -3,9 +3,17 @@ function Record () {
   this.value = Math.random()*100;
 }
 
+function createCustomContent (amount) {
+  var records = [];
+  for (var i = 0; i < amount; i += 1) {
+    records.push(new Record());
+  }
+  return records;
+}
+
 function TableController($scope) {
   $scope.selected = -1;
-  $scope.records = [new Record(), new Record()];
+  $scope.records = createCustomContent(2000);
 
   $scope.insert = function () {
     this.records.unshift(new Record());

@@ -7,15 +7,20 @@ App.Record = Ember.Object.extend({
   }
 });
 
+function createCustomContent (amount) {
+  var records = [];
+  for (var i = 0; i < amount; i += 1) {
+    records.push(App.Record.create());
+  }
+  return records;
+}
+
 App.DataController = Ember.ArrayProxy.create({
   timer: null,
   amount: null,
   elapsed: null,
   selected: -1,
-  content: [
-    App.Record.create(),
-    App.Record.create()
-  ]
+  content: createCustomContent(2000)
 });
 
 App.RecordView = Ember.View.extend({
