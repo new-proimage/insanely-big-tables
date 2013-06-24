@@ -1,5 +1,9 @@
 # Insanely Big Tables
 
+## Demo
+[http://bolshchikov.github.io/insanely-big-tables/](http://bolshchikov.github.io/insanely-big-tables/
+)
+
 ## Overview
 This project is intended to research the behavior of frameworks and components that allows to build tables.
 Candidates are chosen with the support of two-way bindings.
@@ -20,6 +24,23 @@ Please, keep in mind that the minimal timer for JS is 4 milliseconds. The second
 overall amount of records that should be added to the table. Two fields on the right specify the current amount of
 records in the table, and the elapsed time that took to populate the table.
 
+## Results
+### Scroll Test
+
+(Please note that the computer itself and browser can affect the result.
+Let us know if your experience was different)
+For 1000 rows, both platforms behave roughly the same.
+For 2000 rows, Ember has a much better scrolling behavior, while angular starts to experience freezes
+For 4000 rows, Angular is almost unusable, scrolling on Angular will cause long freezes. Ember however has almost no freezes at all.
+
+### Speed Test
+
+**The smaller a value, the better.**
+![Angular vs. Ember Bars Plot](https://raw.github.com/bolshchikov/insanely-big-tables/master/stats/ng-vs-em-bars.png)
+![Angular vs. Ember Lines Plot](https://raw.github.com/bolshchikov/insanely-big-tables/master/stats/ng-vs-em-lines.png)
+The performance of Angular and Ember in the described test. The X-axis represents the amount of records in the table.
+The Y-axis is the time in seconds that took framework to fill the table. The rate is one record in every 5 milliseconds.
+
 ## How to run
 You can check out the running website at [http://bolshchikov.github.io/insanely-big-tables/
 ](http://bolshchikov.github.io/insanely-big-tables/).
@@ -30,15 +51,13 @@ Specify the parameters of the test: the time period and overall amount and hit `
 
 In case of running test in parallel, make sure to run it in Google Chrome and in different windows.
 
-## Angular vs. Ember
-**The smaller a value, the better.**
-![Angular vs. Ember Bars Plot](https://raw.github.com/bolshchikov/insanely-big-tables/master/stats/ng-vs-em-bars.png)
-![Angular vs. Ember Lines Plot](https://raw.github.com/bolshchikov/insanely-big-tables/master/stats/ng-vs-em-lines.png)
-The performance of Angular and Ember in the described test. The X-axis represents the amount of records in the table.
-The Y-axis is the time in seconds that took framework to fill the table. The rate is one record in every 5 milliseconds.
-
 ## Versions
 
 * Ember 1.0.0-rc.5
 * Angular 1.0.7
 * Knockout 2.2.1
+
+## Authors
+
+* Ilan Goldfeld [New ProImage]
+* Sergey N. Bolshchikov [New ProImage]
