@@ -7,24 +7,51 @@
 </head>
 <body>
   <div class="container">
+    <p>This is an application for testing the behavior of JavaScript framework, such as Angular
+    Ember, for seriously big tables including thousands of records.</p>
+    <p>Firstly, choose a framework for which you would like to run the tests, and then choose a test.
+    There are two of them: scroll test and speed test.</p>
+    <p><strong>Important!</strong> For the proper results, each run test will be opened in a new tab.
+    And, before running the test, please, make sure that tabs from
+    previous test are closed. To run several tests in parallel is not recommended due to limitations of
+    browsers performance.</p>
+    <p><a href="https://github.com/bolshchikov/insanely-big-tables">The test results can be found here</a></p>
+
     <form class="form-inline">
+      <script type="text/x-handlebars">
         <legend>Choose a framework:</legend>
-        <script type="text/x-handlebars">
-          {{
-            view Ember.Select contentBinding="App.controller.content"
-              optionLabelPath="content.title"
-              optionValuePath="content.value"
-              selectionBinding="App.controller.selected"
-          }}
-          {{#view App.Launch}}Launch{{/view}}
-        </script>
+        {{
+          view Ember.Select contentBinding="App.frameworks.content"
+            optionLabelPath="content.title"
+            optionValuePath="content.value"
+            selectionBinding="App.frameworks.selected"
+        }}
+        <legend>Scroll Test</legend>
+        <p>This test checks the scrolling behavior of big and dynamic tables.
+        The test create a big table (1000 - 4000 rows, based on your selection), and ads a row every second.
+        This is a quality test, meaning you will have to play a bit with the scroll to get a feeling of how
+        it works on each platform.</p>
+        {{
+          view Ember.Select contentBinding="App.scrollOptions.content"
+            selectionBinding="App.scrollOptions.selected"
+        }}
+        <button class="btn btn-success" {{action launch "scroll"}}>Launch</button>
+        <legend>Speed Test</legend>
+        <p>
+          This test checks how fast the platform can handle adding rows to a table. This is a little artificial
+          test where we do want to check how fast each table handles event addition, so we want to neutralize "batch"
+          processing advantages that Ember might have. To achieve this we add one row every 5 mSec using a timer,
+          and check the total time that each platform takes to finish.
+        </p>
+        {{
+        view Ember.Select contentBinding="App.speedOptions.content"
+          selectionBinding="App.speedOptions.selected"
+        }}
+        <button class="btn btn-success" {{action launch "speed"}}>Launch</button>
+      </script>
+
     </form>
-    <ol>
-      <li>Choose the framework. It will be opened in a new tab.</li>
-      <li>Specify the rate.</li>
-      <li>Specify the amount of records to fill.</li>
-      <li>Click Start.</li>
-    </ol>
+
   </div>
 
 <script type="text/javascript" src="js/libs/jquery-1.9.1.js"></script>

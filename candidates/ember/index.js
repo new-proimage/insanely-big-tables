@@ -1,4 +1,7 @@
-App = Ember.Application.create();
+App = Ember.Application.create({
+  type: window.location.search.split('&')[0].slice(2),
+  amount: window.location.search.split('&')[1]
+});
 
 App.Record = Ember.Object.extend({
   init: function () {
@@ -7,8 +10,11 @@ App.Record = Ember.Object.extend({
   }
 });
 
-function createCustomContent (amount) {
-  var records = [];
+function createCustomContent () {
+  var amount = App.amount, records = [];
+  if (App.type === 'speed') {
+    return records;
+  }
   for (var i = 0; i < amount; i += 1) {
     records.push(App.Record.create());
   }
@@ -16,11 +22,11 @@ function createCustomContent (amount) {
 }
 
 App.DataController = Ember.ArrayProxy.create({
-  timer: null,
-  amount: null,
+  timer: (App.type === 'scroll') ? 1000 : 10,
+  amount: (App.type === 'scroll') ? "1000" : App.amount,
   elapsed: null,
   selected: -1,
-  content: createCustomContent(4000)
+  content: createCustomContent()
 });
 
 App.RecordView = Ember.View.extend({
@@ -73,6 +79,7 @@ App.RemoveButtonView = App.ButtonView.extend({
 
 
 App.StartButtonView = App.ButtonView.extend({
+  classNames: ['btn', 'btn-danger'],
   click: function () {
     var timer = App.DataController.get('timer'),
         amount = App.DataController.get('amount'),
@@ -92,14 +99,16 @@ App.StartButtonView = App.ButtonView.extend({
 });
 
 App.TimerInputView = Ember.TextField.extend({
-  attributeBindings: ['placeholder'],
+  attributeBindings: ['placeholder', 'readonly'],
   placeholder: 'timer, ms',
+  readonly: 'readonly',
   valueBinding: 'App.DataController.timer'
 });
 
 App.AmountInputView = Ember.TextField.extend({
-  attributeBindings: ['placeholder'],
+  attributeBindings: ['placeholder', 'readonly'],
   placeholder: 'amount',
+  readonly: 'readonly',
   valueBinding: 'App.DataController.amount'
 });
 

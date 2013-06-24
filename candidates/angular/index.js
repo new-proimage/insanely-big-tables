@@ -1,10 +1,18 @@
+window.App = {
+  type: window.location.search.split('&')[0].slice(2),
+  amount: window.location.search.split('&')[1]
+};
+
 function Record () {
   this.key = Math.random();
   this.value = Math.random()*100;
 }
 
 function createCustomContent (amount) {
-  var records = [];
+  var amount = App.amount, records = [];
+  if (App.type === 'speed') {
+    return records;
+  }
   for (var i = 0; i < amount; i += 1) {
     records.push(new Record());
   }
@@ -12,6 +20,8 @@ function createCustomContent (amount) {
 }
 
 function TableController($scope) {
+  $scope.timer = (App.type === 'scroll') ? 1000 : 10;
+  $scope.amount = (App.type === 'scroll') ? "1000" : App.amount;
   $scope.selected = -1;
   $scope.records = createCustomContent(4000);
 

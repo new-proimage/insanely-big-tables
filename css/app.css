@@ -4,7 +4,6 @@
 button {
   margin-left: 15px;
 }
-ol {
-  margin-top: 55px;
-  color: grey;
+legend {
+  margin-top: 25px;
 }

@@ -2,7 +2,20 @@ $(function () {
   window.App = Ember.Application.create({
     rootElement: '.form-inline'
   });
-  App.controller = Ember.Object.create({
+  App.Controller = Ember.Controller.extend({
+    launch: function (testType) {
+      switch (testType) {
+        case 'scroll':
+          window.open('./candidates/' + App.frameworks.get('selected.title').toLowerCase() + '/index.html?=scroll&' + App.scrollOptions.get('selected'));
+          break;
+        case 'speed':
+          window.open('./candidates/' + App.frameworks.get('selected.title').toLowerCase() + '/index.html?=speed&' + App.speedOptions.get('selected'));
+          break;
+      }
+
+    }
+  });
+  App.frameworks = Ember.ObjectController.create({
     selected: null,
     content: [
       Ember.Object.create({
@@ -12,19 +25,17 @@ $(function () {
       Ember.Object.create({
         value: 'em',
         title: 'Ember'
-      }),
-      Ember.Object.create({
-        value: 'ko',
-        title: 'Knockout'
-      })
+      })//,
+//      Ember.Object.create({
+//        value: 'ko',
+//        title: 'Knockout'
+//      })
     ]
   });
-  App.Launch = Ember.View.extend({
-    tagName: 'button',
-    classNames: ['btn', 'btn-success'],
-    click: function (ev) {
-      ev.preventDefault();
-      window.open('./candidates/' + App.controller.get('selected.title').toLowerCase() + '/index.html');
-    }
-  })
+  App.Options = Ember.Object.extend({
+    selected: null,
+    content: [1000, 2000, 3000, 4000]
+  });
+  App.scrollOptions = App.Options.create();
+  App.speedOptions = App.Options.create();
 });

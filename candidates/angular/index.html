@@ -25,9 +25,9 @@
     <button id="add" class="btn" ng-click="add()">Add</button>
     <button id="edit" class="btn" ng-click="edit()">Edit</button>
     <button id="del" class="btn" ng-click="remove()">Remove</button>
-    <button id="start" class="btn" ng-click="start()">Start</button>
-    <input id="timer" placeholder="timer, ms" ng-model="timer"/>
-    <input id="amount" placeholder="how many" ng-model="amount"/>
+    <button id="start" class="btn btn-danger" ng-click="start()">Start</button>
+    <input id="timer" placeholder="timer, ms" readonly="readonly" ng-model="timer"/>
+    <input id="amount" placeholder="how many" readonly="readonly" ng-model="amount"/>
     <input id="elapsed" value="{{elapsed}}" readonly="readonly" placeholder="elapsed time, sec" />
     <input id="total" value="{{records.length}}" readonly="readonly" />
 
