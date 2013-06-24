@@ -1,7 +1,7 @@
 # Insanely Big Tables
 
 ## Demo
-[http://bolshchikov.github.io/insanely-big-tables/](http://bolshchikov.github.io/insanely-big-tables/
+[http://newproimage.github.io/insanely-big-tables/](http://newproimage.github.io/insanely-big-tables/
 )
 
 ## Overview
@@ -29,7 +29,7 @@ records in the table, and the elapsed time that took to populate the table.
 
 (Please note that the computer itself and browser can affect the result.
 Let us know if your experience was different)
-For 1000 rows, both platforms behave roughly the same.
+For 1000 rows, Ember has a slightly cleaner scroll behavior without any freezes.
 For 2000 rows, Ember has a much better scrolling behavior, while angular starts to experience freezes
 For 4000 rows, Angular is almost unusable, scrolling on Angular will cause long freezes. Ember however has almost no freezes at all.
 
