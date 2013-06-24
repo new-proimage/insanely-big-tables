@@ -13,7 +13,7 @@ function createCustomContent (amount) {
 
 function TableController($scope) {
   $scope.selected = -1;
-  $scope.records = createCustomContent(2000);
+  $scope.records = createCustomContent(4000);
 
   $scope.insert = function () {
     this.records.unshift(new Record());

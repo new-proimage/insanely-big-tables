@@ -20,7 +20,7 @@ App.DataController = Ember.ArrayProxy.create({
   amount: null,
   elapsed: null,
   selected: -1,
-  content: createCustomContent(2000)
+  content: createCustomContent(4000)
 });
 
 App.RecordView = Ember.View.extend({
