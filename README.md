@@ -1,7 +1,7 @@
 # Insanely Big Tables
 
 ## Demo
-[http://newproimage.github.io/insanely-big-tables/](http://newproimage.github.io/insanely-big-tables/
+[http://new-proimage.github.io/insanely-big-tables/](http://new-proimage.github.io/insanely-big-tables/
 )
 
 ## Overview
@@ -42,8 +42,8 @@ The performance of Angular and Ember in the described test. The X-axis represent
 The Y-axis is the time in seconds that took framework to fill the table. The rate is one record in every 5 milliseconds.
 
 ## How to run
-You can check out the running website at [http://bolshchikov.github.io/insanely-big-tables/
-](http://bolshchikov.github.io/insanely-big-tables/).
+You can check out the running website at [http://new-proimage.github.io/insanely-big-tables/
+](http://new-proimage.github.io/insanely-big-tables/.
 
 Or clone this repository. It consists of framework folders and `vendors` folder which keeps the libs.
 Each famework folder contains javascript implementation and  `index.html` file. Open it in a browser.
