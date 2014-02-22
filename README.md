@@ -1,6 +1,5 @@
 ## Insanely Big Tables
 
-
 ### Overview
 This project is intended to research the behavior of frameworks and components that allows to build tables.
 Candidates are chosen with the support of two-way bindings.
@@ -23,12 +22,10 @@ records in the table, and the elapsed time that took to populate the table.
 
 
 ### Versions
-
 * Angular 1.2
 * Ember 1.4
 
 
 ### Authors
-
 * Ilan Goldfeld [New ProImage]
 * Sergey N. Bolshchikov [New ProImage]
