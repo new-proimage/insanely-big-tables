@@ -1,0 +1,10 @@
+body {
+  margin: 10px;
+}
+table {
+  margin-top: 20px;
+}
+.form-control {
+  width: auto;
+  display: inline;
+}

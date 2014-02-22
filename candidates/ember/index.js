@@ -1,114 +1,79 @@
-App = Ember.Application.create();
+(function (global) {
 
-App.Record = Ember.Object.extend({
-  init: function () {
-    this.set('key', Math.random());
-    this.set('value', Math.random()*100);
-  }
-});
+  global.App = Ember.Application.create();
 
-App.DataController = Ember.ArrayProxy.create({
-  timer: null,
-  amount: null,
-  elapsed: null,
-  selected: -1,
-  content: [
-    App.Record.create(),
-    App.Record.create()
-  ]
-});
-
-App.RecordView = Ember.View.extend({
-  tagName: 'tr',
-  record: null,
-  click: function (ev) {
-    App.DataController.set('selected', App.DataController.content.indexOf(this.record));
-    $('.error').each(function (i, el) {
-      $(el).removeClass('error');
-    });
-    $(ev.target).parent().addClass('error');
-  }
-});
-
-App.ButtonView = Ember.View.extend({
-  tagName: 'button',
-  classNames: ['btn']
-});
-
-App.InsButtonView = App.ButtonView.extend({
-  click: function () {
-    App.DataController.unshiftObject(App.Record.create());
-  }
-});
-
-App.AddButtonView = App.ButtonView.extend({
-  click: function () {
-    App.DataController.pushObject(App.Record.create());
-  }
-});
-
-App.EditButtonView = App.ButtonView.extend({
-  click: function () {
-    var index = App.DataController.get('selected');
-    if (index !== -1) {
-      App.DataController.content[index].set('value', 'Edited');
+  App.Item = Ember.Object.extend({
+    init: function () {
+      this._super.apply(this, arguments);
+      this.set('key', Math.random());
+      this.set('value', Math.random());
     }
-  }
-});
+  });
 
+  App.ApplicationController = Ember.ArrayController.extend({
+    init: function () {
+      this._super.apply(this, arguments);
+      var content = this.get('content');
+      content.pushObjects([
+        App.Item.create(),
+        App.Item.create()
+      ]);
+    },
+    actions: {
+      unshift: function () {
+        this.get('content').unshiftObject(App.Item.create());
+      },
+      push: function () {
+        this.get('content').pushObject(App.Item.create());
+      },
+      remove: function () {
 
-App.RemoveButtonView = App.ButtonView.extend({
-  click: function () {
-    var index = App.DataController.get('selected');
-    if (index !== -1) {
-      App.DataController.removeObject(App.DataController.content[index]);
-    }
-  }
-});
+      },
+      clear: function () {
+        this.get('content').clear();
+      },
+      start: function () {
+        var intervalId;
+        if (this.get('amount') === null && this.get('rate') === null) {
+          console.log('amount and rate should be specified');
+          return;
+        }
 
+        // start mark
+        global.IBT.startMeasuring();
 
-App.StartButtonView = App.ButtonView.extend({
-  click: function () {
-    var timer = App.DataController.get('timer'),
-        amount = App.DataController.get('amount'),
-        i = 0,
-        launch = new Date().getTime();
-    (function adding() {
-      App.DataController.unshiftObject(App.Record.create());
-      i += 1;
-      if (i % 100 === 0) {
-        console.log((new Date().getTime() - launch)/1000);
+        // add the first
+        this.send('unshift');
+
+        // set interval for further adds
+        intervalId = setInterval(this.add.bind(this), global.IBT.calculateInterval(this.get('rate')));
+        this.set('intervalId', intervalId);
+      },
+      stop: function () {
+        // stop mark
+        global.IBT.stopMeasuring();
+        clearInterval(this.get('intervalId'));
+        this.set('time', global.IBT.calculateMeasure());
       }
-      if (i < amount) setTimeout(adding, timer);
-      else App.DataController.set('elapsed', (new Date().getTime() - launch)/1000);
-    })();
+    },
+    content: [],
+    rate: null,
+    amount: null,
+    time: null,
+    stats: [],
+    add: function () {
+      if (this.get('amount') === 0) {
+        this.send('stop');
+      }
+      else {
+        this.send('unshift');
+        this.decrementProperty('amount');
+      }
+    }
+  });
 
-  }
-});
+  App.RowView = Ember.View.extend({
+    tagName: 'tr'
+  });
 
-App.TimerInputView = Ember.TextField.extend({
-  attributeBindings: ['placeholder'],
-  placeholder: 'timer, ms',
-  valueBinding: 'App.DataController.timer'
-});
-
-App.AmountInputView = Ember.TextField.extend({
-  attributeBindings: ['placeholder'],
-  placeholder: 'amount',
-  valueBinding: 'App.DataController.amount'
-});
-
-App.TotalView = Ember.TextField.extend({
-  attributeBindings: ['readonly'],
-  classNames: ['total'],
-  readonly: 'readonly',
-  valueBinding: 'App.DataController.content.length'
-});
-
-App.ElapsedView = Ember.TextField.extend({
-  attributeBindings: ['readonly', 'placeholder'],
-  classNames: ['elapsed'],
-  readonly: 'readonly',
-  placeholder: 'elapsed time, sec',
-  valueBinding: 'App.DataController.elapsed'
-});
+})(window);
