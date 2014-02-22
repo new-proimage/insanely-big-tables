@@ -1,57 +1,67 @@
-function Record () {
-  this.key = Math.random();
-  this.value = Math.random()*100;
-}
+(function (global) {
+  var App, Item;
+  App = angular.module('myApp', []);
 
-function TableController($scope) {
-  $scope.selected = -1;
-  $scope.records = [new Record(), new Record()];
-
-  $scope.insert = function () {
-    this.records.unshift(new Record());
+  Item = function() {
+    this.key = Math.random();
+    this.value = Math.random();
   };
 
-  $scope.add = function () {
-    this.records.push(new Record());
-  };
+  App.controller('ApplicationController', function ($scope) {
+    var add;
 
-  $scope.edit = function () {
-    if ($scope.selected !== -1) {
-      $scope.records[$scope.selected].value = 'Edited';
-    }
-  };
-
-  $scope.remove = function () {
-    if ($scope.selected !== -1) {
-      $scope.records.splice($scope.selected, 1);
-    }
-  };
-
-  $scope.select = function (ev, index) {
-    $scope.selected = index;
-    $('.error').each(function (i, el) {
-      $(el).removeClass('error');
-    });
-    $(ev.currentTarget).addClass('error');
-  };
-
-  $scope.start = function () {
-    var that = this,
-        i = 0,
-        launch = new Date().getTime();
-    (function adding() {
-      that.insert();
-      if (i !== 0) that.$apply();
-      i += 1;
-      if (i % 100 === 0) {
-        console.log((new Date().getTime() - launch)/1000);
+    add = function () {
+      if ($scope.amount === 0) {
+        $scope.stop();
       }
-      if (i < that.amount) setTimeout(adding, that.timer);
       else {
-        $scope.elapsed = (new Date().getTime() - launch)/1000;
-        that.$apply();
+        $scope.unshift();
+        $scope.amount -= 1;
       }
-    })();
-  };
+      $scope.$apply();
+    };
 
-}
+    $scope.content = [new Item(), new Item()];
+    $scope.unshift = function () {
+      $scope.content.unshift(new Item());
+    };
+    $scope.push = function () {
+      $scope.content.push(new Item());
+    };
+    $scope.remove = function () {
+
+    };
+    $scope.clear = function () {
+      $scope.content.length = 0;
+    };
+    $scope.start = function () {
+      var intervalId;
+      if ($scope.amount === null && $scope.rate === null) {
+        console.log('amount and rate should be specified');
+        return;
+      }
+
+      // start mark
+      global.IBT.startMeasuring();
+
+      // add the first
+      $scope.unshift();
+
+      // set interval for further adds
+      intervalId = setInterval(add, global.IBT.calculateInterval($scope.rate));
+      $scope.intervalId = intervalId;
+    };
+    $scope.stop = function () {
+      // stop mark
+      global.IBT.stopMeasuring();
+      clearInterval($scope.intervalId);
+      $scope.time = global.IBT.calculateMeasure();
+    };
+
+    $scope.rate = null;
+    $scope.amount = null;
+    $scope.time = null;
+    $scope.stats = [];
+  });
+  App.$inject = ['$scope'];
+})(window);
