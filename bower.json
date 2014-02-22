@@ -1,0 +1,25 @@
+{
+  "name": "insanely-big-tables",
+  "version": "0.0.2",
+  "homepage": "https://github.com/bolshchikov/insanely-big-tables",
+  "authors": [
+    "bolshchikov <sergey@bolshchikov.net>"
+  ],
+  "description": "the showcase for JS MVC framework to handle updates of big tables",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.2.13",
+    "bootstrap": "~3.1.1",
+    "ember": "~1.4.0",
+    "knockout": "~3.0.0",
+    "react": "~0.9.0"
+  }
+}
