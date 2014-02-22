@@ -22,7 +22,7 @@
     },
     calculateMeasure: function () {
       var measure = global.performance.getEntriesByName('addElapsed');
-      return (measure[0].duration / 1000).toFixed(2) + ' sec';
+      return (measure[0].duration / 1000).toFixed(2) + ' sec.';
     }
   };
 
