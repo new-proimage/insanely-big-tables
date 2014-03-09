@@ -30,9 +30,9 @@ The lower bar, the better.
 ![Statistics Chart](./stats/stats.png)
 
 ### Candidates
-* Angular v1.2
-* Ember v1.4
-* Knockout v3.0.0
+* Angular 1.2
+* Ember 1.4
+* Knockout 3.0.0
 * React 0.9
 
 
