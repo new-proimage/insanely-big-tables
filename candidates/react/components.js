@@ -12,9 +12,12 @@ var BaseButton = React.createClass({
 });
 
 var BaseInput = React.createClass({
+  handleChange: function (ev) {
+    App[this.props.value] = Number(ev.target.value);
+  },
   render: function () {
     return (
-      <input type="text" className="form-control" placeholder={this.props.placeholder} readOnly={this.props.readonly}/>
+      <input type="text" className="form-control" value={App[this.props.value]} onChange={this.handleChange} placeholder={this.props.placeholder} readOnly={this.props.readonly}/>
     );
   }
 });
@@ -23,10 +26,10 @@ var ArrayButtonGroup = React.createClass({
   render: function () {
     return (
       <div className="btn-group">
-        <BaseButton classes="btn btn-default" handler={window.App.unshiftItem}>Unshift</BaseButton>
-        <BaseButton classes="btn btn-default" handler={window.App.pushItem}>Push</BaseButton>
-        <BaseButton classes="btn btn-default" handler={window.App.removeItem}>Remove</BaseButton>
-        <BaseButton classes="btn btn-default" handler={window.App.clearItems}>Clear</BaseButton>
+        <BaseButton classes="btn btn-default" handler={window.App.unshift}>Unshift</BaseButton>
+        <BaseButton classes="btn btn-default" handler={window.App.push}>Push</BaseButton>
+        <BaseButton classes="btn btn-default" handler={window.App.remove}>Remove</BaseButton>
+        <BaseButton classes="btn btn-default" handler={window.App.clear}>Clear</BaseButton>
       </div>
     );
   }
@@ -42,23 +45,59 @@ var ControlButtonGroup = React.createClass({
     );
   }
 });
+
 var Controls = React.createClass({
   render: function () {
     return (
       <div className="controls-wrapper">
         <ArrayButtonGroup />
         <ControlButtonGroup />
-        <BaseInput placeholder="rate, amount/second"/>
-        <BaseInput placeholder="amount to add"/>
-        <BaseInput placeholder="total time, sec" readonly="true"/>
-        <BaseInput placeholder="total" readonly="true"/>
+        <BaseInput value="rate" placeholder="rate, amount/second"/>
+        <BaseInput value="amount" placeholder="amount to add"/>
+        <BaseInput value="time" placeholder="total time, sec" readonly="true"/>
+        <BaseInput value="total" placeholder="total" readonly="true"/>
       </div>
     );
   }
 });
 
-React.renderComponent(
-  <Controls />,
-  document.querySelector('#controls')
-);
+var Rows = React.createClass({
+  render: function () {
+    var rows = this.props.content.map(function (item) {
+      return (
+        <tr>
+          <td>{item.key}</td>
+          <td>{item.value}</td>
+        </tr>
+      );
+    });
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows}
+        </tbody>
+      </table>
+    );
+  }
+});
+App.render = function () {
+  App.total = App.content.length;
+  React.renderComponent(
+    <Controls  />,
+    document.querySelector('#controls')
+  );
+  React.renderComponent(
+    <Rows content={App.content}/>,
+    document.querySelector('table')
+  );
+};
+App.render();
+
+
 
