@@ -31,6 +31,7 @@ records in the table, and the elapsed time that took to populate the table.
 ### Versions
 * Angular 1.2
 * Ember 1.4
+* Knockout 3.0.0
 
 
 ### Authors

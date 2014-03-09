@@ -1,63 +1,70 @@
-$(function () {
-  var Record = function () {
-    this.key = ko.observable(Math.random());
-    this.value = ko.observable(Math.random()*100);
+(function (global) {
+  var Item, View, ko = global.ko;
+  Item = function() {
+    this.key = Math.random();
+    this.value = Math.random();
   };
-  var View = function () {
-    var that = this;
 
-    that.timer = ko.observable();
-    that.amount = ko.observable();
-    that.records = ko.observableArray([new Record(), new Record()]);
-    that.total = ko.computed(function () {
-      return that.records().length;
-    }, that);
-    that.elapsed = ko.observable();
-    that.selected = -1;
+  View = function () {
+    this.content = ko.observableArray([
+      new Item(),
+      new Item()
+    ]);
+    this.rate = ko.observable(null);
+    this.amount = ko.observable(null);
+    this.time = ko.observable(null);
 
-    that.select = function (index, record, ev) {
-      that.selected = index();
-      $('.error').each(function (i, el) {
-        $(el).removeClass('error');
+    this.unshift = function () {
+      this.content.unshift(new Item());
+    };
+    this.push = function () {
+      this.content.push(new Item());
+    };
+    this.remove = function () {
+
+    };
+    this.clear = function () {
+      this.content.removeAll();
+    };
+    this.start = function () {
+      var intervalId;
+      if (this.amount() === null && this.rate() === null) {
+        console.log('amount and rate should be specified');
+        return;
+      }
+
+      // start mark
+      global.IBT.startMeasuring();
+
+      // add the first
+      this.unshift();
+
+      // set interval for further adds
+      intervalId = setInterval(this.add.bind(this), global.IBT.calculateInterval(this.rate()));
+      this.intervalId = intervalId;
+    };
+    this.stop = function () {
+      // stop mark
+      global.IBT.stopMeasuring();
+      clearInterval(this.intervalId);
+      this.time(global.IBT.calculateMeasure());
+      global.IBT.calculateHundreds().forEach(function (item) {
+        console.log(item);
       });
-      $(ev.currentTarget).addClass('error');
     };
-
-    that.insert = function () {
-      that.records.unshift(new Record());
-    };
-
-    that.add = function () {
-      that.records.push(new Record());
-    };
-
-    that.start = function () {
-      var i = 0,
-          launch = new Date().getTime();
-      (function adding() {
-        that.insert();
-        i += 1;
-        if (i % 100 === 0) {
-          console.log((new Date().getTime() - launch)/1000);
-        }
-        if (i < that.amount()) setTimeout(adding, that.timer());
-        else that.elapsed((new Date().getTime() - launch)/1000);
-      })();
-    };
-
-    that.edit = function () {
-      if (that.selected !== -1) {
-        that.records()[that.selected].value('Edited');
+    this.add = function () {
+      if (this.content().length % 100 === 0) {
+        global.IBT.markHundred(this.content().length / 100);
+      }
+      if (this.amount() === 0) {
+        this.stop();
+      }
+      else {
+        this.unshift();
+        this.amount(this.amount() - 1);
       }
     };
-
-    that.remove = function () {
-      if (that.selected !== -1) {
-        that.records.splice(that.selected, 1);
-      }
-    };
-
   };
 
   ko.applyBindings(new View());
-});
+})(window);

@@ -67,7 +67,6 @@
     $scope.rate = null;
     $scope.amount = null;
     $scope.time = null;
-    $scope.stats = [];
   });
   App.$inject = ['$scope'];
 })(window);

@@ -63,7 +63,6 @@
     rate: null,
     amount: null,
     time: null,
-    stats: [],
     add: function () {
       if (this.get('content.length') % 100 === 0) {
         global.IBT.markHundred(this.get('content.length') / 100);
