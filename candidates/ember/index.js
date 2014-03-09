@@ -54,7 +54,9 @@
         global.IBT.stopMeasuring();
         clearInterval(this.get('intervalId'));
         this.set('time', global.IBT.calculateMeasure());
-        console.log(global.IBT.calculateHundreds());
+        global.IBT.calculateHundreds().forEach(function (item) {
+          console.log(item);
+        });
       }
     },
     content: [],

@@ -25,6 +25,8 @@ Please, keep in mind that the minimal timer for JS is 4 milliseconds. The second
 overall amount of records that should be added to the table. Two fields on the right specify the current amount of
 records in the table, and the elapsed time that took to populate the table.
 
+### Statistics
+![Statistics Chart](./stats/ng-em.png)
 
 ### Versions
 * Angular 1.2

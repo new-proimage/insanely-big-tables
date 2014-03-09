@@ -11,6 +11,9 @@
     var add;
 
     add = function () {
+      if ($scope.content.length % 100 === 0) {
+        global.IBT.markHundred($scope.content.length / 100);
+      }
       if ($scope.amount === 0) {
         $scope.stop();
       }
@@ -56,7 +59,9 @@
       global.IBT.stopMeasuring();
       clearInterval($scope.intervalId);
       $scope.time = global.IBT.calculateMeasure();
-      console.log(global.IBT.calculateHundreds());
+      global.IBT.calculateHundreds().forEach(function (item) {
+        console.log(item);
+      });
     };
 
     $scope.rate = null;
