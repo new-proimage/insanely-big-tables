@@ -26,12 +26,14 @@ overall amount of records that should be added to the table. Two fields on the r
 records in the table, and the elapsed time that took to populate the table.
 
 ### Statistics
+The lower bar, the better.
 ![Statistics Chart](./stats/stats.png)
 
 ### Candidates
 * Angular v1.2
 * Ember v1.4
 * Knockout v3.0.0
+* React 0.9
 
 
 ### Authors
