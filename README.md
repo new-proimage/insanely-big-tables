@@ -26,7 +26,7 @@ overall amount of records that should be added to the table. Two fields on the r
 records in the table, and the elapsed time that took to populate the table.
 
 ### Statistics
-![Statistics Chart](./stats/ng-em.png)
+![Statistics Chart](./stats/stats.png)
 
 ### Versions
 * Angular 1.2
