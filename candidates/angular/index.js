@@ -56,6 +56,7 @@
       global.IBT.stopMeasuring();
       clearInterval($scope.intervalId);
       $scope.time = global.IBT.calculateMeasure();
+      console.log(global.IBT.calculateHundreds());
     };
 
     $scope.rate = null;

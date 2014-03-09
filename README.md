@@ -1,12 +1,17 @@
 ## Insanely Big Tables
 
-### Overview
-This project is intended to research the behavior of frameworks and components that allows to build tables.
-Candidates are chosen with the support of two-way bindings.
+### Why [TodoMVC](http://todomvc.com/) doesn't cut it
+Performance of JavaScript, particularly of MVC frameworks becomes an issue due to fact that simple
+website become an enterprise apps.
 
-### Idea
-The idea and motivation behind the test are the following. The library is required to build a table,
-with two-way binding capability, which will be updated continuously in relatively fast speed but not in batches.
+TodoMVC shows you the framework but tells nothing about its performance.
+This project is intended to research the behavior of JavaScript frameworks on big data. It's not only the code
+demonstration of the framework but also its performance (updates, scroll, bindings) utilizing relatively
+big amount of data.
+
+### Tests description
+The JS MVC frameworks are challenged to check their behavior on big (seriously big) tables that can be
+be updated continuously in relatively fast speed but not in batches.
 For example, a new record might be added every half of a second out of several thousands.
 So, the table should be updated fast, and possess smooth scrolling while adding at the same time.
 

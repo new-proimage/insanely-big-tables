@@ -54,6 +54,7 @@
         global.IBT.stopMeasuring();
         clearInterval(this.get('intervalId'));
         this.set('time', global.IBT.calculateMeasure());
+        console.log(global.IBT.calculateHundreds());
       }
     },
     content: [],
@@ -62,6 +63,9 @@
     time: null,
     stats: [],
     add: function () {
+      if (this.get('content.length') % 100 === 0) {
+        global.IBT.markHundred(this.get('content.length') / 100);
+      }
       if (this.get('amount') === 0) {
         this.send('stop');
       }
