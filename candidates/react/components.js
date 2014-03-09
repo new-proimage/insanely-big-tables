@@ -72,17 +72,9 @@ var Rows = React.createClass({
       );
     });
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>Key</th>
-            <th>Value</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows}
-        </tbody>
-      </table>
+      <tbody>
+        {rows}
+      </tbody>
     );
   }
 });
