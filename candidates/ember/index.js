@@ -46,7 +46,7 @@
         this.send('unshift');
 
         // set interval for further adds
-        intervalId = setInterval(this.add.bind(this), global.IBT.calculateInterval(this.get('rate')));
+        intervalId = setInterval(Ember.run.bind(this, this.add), global.IBT.calculateInterval(this.get('rate')));
         this.set('intervalId', intervalId);
       },
       stop: function () {
