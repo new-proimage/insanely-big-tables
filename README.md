@@ -29,11 +29,11 @@ records in the table, and the elapsed time that took to populate the table.
 The lower bar, the better.
 ![Statistics Chart](./stats/stats.png)
 
-### Candidates
-* Angular 1.2
-* Ember 1.4
-* Knockout 3.0.0
-* React 0.9
+### Results
+1. Ember 1.4
+2. Knockout 3.0.0
+3. Angular 1.2
+4. React 0.9
 
 
 ### Authors
