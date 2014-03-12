@@ -23,6 +23,9 @@ var BaseInput = React.createClass({
 });
 
 var ArrayButtonGroup = React.createClass({
+  shouldComponentUpdate: function () {
+    return false;
+  },
   render: function () {
     return (
       <div className="btn-group">
@@ -36,6 +39,9 @@ var ArrayButtonGroup = React.createClass({
 });
 
 var ControlButtonGroup = React.createClass({
+  shouldComponentUpdate: function () {
+    return false;
+  },
   render: function () {
     return (
       <div className="btn-group">
@@ -61,15 +67,27 @@ var Controls = React.createClass({
   }
 });
 
+var Row = React.createClass({
+  shouldComponentUpdate: function (prevProps) {
+    return prevProps.itemKey !== this.props.itemKey ||
+      prevProps.itemValue !== this.props.itemValue;
+  },
+  render: function () {
+    return (
+      <tr>
+        <td>{this.props.itemKey}</td>
+        <td>{this.props.itemValue}</td>
+      </tr>
+    );
+  }
+});
+
 var Rows = React.createClass({
   render: function () {
     var rows = this.props.content.map(function (item) {
-      return (
-        <tr>
-          <td>{item.key}</td>
-          <td>{item.value}</td>
-        </tr>
-      );
+      return <Row
+        key={item.key}
+        itemKey={item.key} itemValue={item.value} />
     });
     return (
       <tbody>
