@@ -30,10 +30,11 @@ The lower bar, the better.
 ![Statistics Chart](./stats/stats.png)
 
 ### Results
-1. Ember 1.4
-2. Knockout 3.0.0
-3. Angular 1.2
-4. React 0.9
+1. [BasisJS](http://basisjs.com/) 1.2.1
+2. [Ember](http://emberjs.com/) 1.4
+3. [Knockout](http://knockoutjs.com/) 3.0.0
+4. [Angular](http://facebook.github.io/react/) 1.2
+5. [React](http://facebook.github.io/react/) 0.9
 
 
 ### Authors
