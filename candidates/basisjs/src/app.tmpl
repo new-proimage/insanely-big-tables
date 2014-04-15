@@ -1,0 +1,21 @@
+<div>
+  <div class="btn-group">
+    <button class="btn btn-default" event-click="unshift">Unshift</button>
+    <button class="btn btn-default" event-click="push">Push</button>
+    <button class="btn btn-default" event-click="remove">Remove</button>
+    <button class="btn btn-default" event-click="clear">Clear</button>
+  </div>
+  &#32;
+  <div class="btn-group">
+    <button class="btn btn-success" event-click="start">Start</button>
+    <button class="btn btn-danger" event-click="stop">Stop</button>
+  </div>
+  &#32;
+
+  <input type="text" class="form-control" value="{rate}" event-change="setRate" placeholder="rate, amount/second"/>&#32;
+  <input type="text" class="form-control" value="{amount}" event-change="setAmount" placeholder="amount to add"/>&#32;
+  <input type="text" class="form-control" value="{time}" placeholder="total time, sec" readonly/>&#32;
+  <input type="text" class="form-control" value="{contentLength}" placeholder="total amount" readonly/>
+
+  <!--{table}-->
+</div>

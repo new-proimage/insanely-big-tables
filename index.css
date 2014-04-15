@@ -4,6 +4,9 @@ body {
 table {
   margin-top: 20px;
 }
+td {
+  width: 50%;
+}
 .form-control {
   width: auto;
   display: inline;
