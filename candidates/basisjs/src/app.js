@@ -20,9 +20,9 @@ var table = new basis.ui.Node({
 
 var app = new basis.ui.Node({
   contentLength: basis.data.Value.from(table, 'childNodesModified', 'childNodes.length'),
-  amount: new basis.Token(3000),
-  rate: new basis.Token(250),
-  time: new basis.Token(0),
+  amount: new basis.Token(void 0),
+  rate: new basis.Token(void 0),
+  time: new basis.Token(void 0),
 
   container: document.body,
   template: resource('./app.tmpl'),
@@ -32,6 +32,11 @@ var app = new basis.ui.Node({
     rate: 'rate',
     amount: 'amount',
     contentLength: 'contentLength'
+  },
+  init: function () {
+    basis.ui.Node.prototype.init.call(this);
+    table.appendChild(new Item());
+    table.appendChild(new Item());
   },
   action: {
     unshift: function(){
