@@ -26,8 +26,9 @@ overall amount of records that should be added to the table. Two fields on the r
 records in the table, and the elapsed time that took to populate the table.
 
 ### Statistics
-The lower bar, the better.
-![Statistics Chart](./stats/stats.png)
+The bar, the better.
+![Statistics Chart](./stats/stats-lines.png)
+![Statistics Chart](./stats/stats-bars.png)
 
 ### Results
 1. [BasisJS](http://basisjs.com/) 1.2.1
